@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText textUserName;
     private EditText textPassword;
+    private TextView textViewLoginInvalid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
         textUserName = findViewById(R.id.editTextUserName);
         textPassword = findViewById(R.id.editTextPassword);
+        textViewLoginInvalid = findViewById(R.id.textViewLoginInvalid);
 
         Button buttonLogin = (Button)findViewById(R.id.buttonLogin);
         buttonLogin.setOnClickListener(listener -> confirmLogin());
@@ -32,8 +36,13 @@ public class LoginActivity extends AppCompatActivity {
         String userName = textUserName.getText().toString();
         String password = textPassword.getText().toString();
 
-        Intent intent = new Intent(this, DisplayAllActivity.class);
-        startActivity(intent);
+        if (UserDatabase.getInstance(getApplicationContext()).authenticate(userName, password)) {
+            Intent intent = new Intent(this, DisplayAllActivity.class);
+            startActivity(intent);
+        }
+        else{
+            textViewLoginInvalid.setText("Login credentials invalid");
+        }
     }
 
     // Take user to RegistrationActivity to create an account

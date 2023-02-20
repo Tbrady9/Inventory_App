@@ -4,132 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8E8D8D"
-    tools:context=".RegistrationActivity">
+    tools:context=".AddItemActivity"
+    android:background="#8E8D8D">
 
     <TextView
-        android:id="@+id/textViewAccountRegistration"
+        android:id="@+id/textViewAddItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
-        android:text="Account Registration"
+        android:text="Add Item"
         android:textColor="#000"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextFirstName"
+        android:id="@+id/editTextItemNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="First Name"
+        android:hint="Item Number"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAccountRegistration" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddItem" />
 
     <EditText
-        android:id="@+id/editTextLastName"
+        android:id="@+id/editTextItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="Item Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextItemNum" />
 
     <EditText
-        android:id="@+id/editTextUserName"
+        android:id="@+id/editTextQty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="User Name"
+        android:hint="Qty"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLastName" />
-
-    <EditText
-        android:id="@+id/editTextRole"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Employee Role"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUserName" />
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRole" />
-
-    <EditText
-        android:id="@+id/editTextPasswordConf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextItemName" />
 
     <Button
-        android:id="@+id/buttonSubmit"
+        android:id="@+id/buttonAddSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="72dp"
         android:backgroundTint="#DAD124"
         android:text="Submit"
         android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordConf" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextQty" />
 
     <TextView
         android:id="@+id/textViewConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#800"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSubmit"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAddSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordConf" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextQty" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
