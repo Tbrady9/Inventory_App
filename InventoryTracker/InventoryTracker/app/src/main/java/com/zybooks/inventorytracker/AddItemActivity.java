@@ -26,7 +26,7 @@ public class AddItemActivity extends AppCompatActivity {
         buttonAddSubmit = findViewById(R.id.buttonAddSubmit);
         txtViewConfirm = findViewById(R.id.textViewConfirm);
         db = new ItemDatabase(this);
-        Intent intent = new Intent(this, DisplayAllActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         buttonAddSubmit.setOnClickListener(new View.OnClickListener(){
 
             @Override

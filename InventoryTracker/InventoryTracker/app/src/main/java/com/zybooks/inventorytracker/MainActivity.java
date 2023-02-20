@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-public class DisplayAllActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private ItemDatabase db;
     private RecyclerView rv;
@@ -21,7 +21,7 @@ public class DisplayAllActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_displayall);
+        setContentView(R.layout.activity_main);
         Button buttonAddItem = findViewById(R.id.buttonAddItem);
         buttonAddItem.setOnClickListener(listener -> addItem());
         Button buttonSettings = findViewById(R.id.buttonSettings);
@@ -37,6 +37,7 @@ public class DisplayAllActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
         textNoItems = findViewById(R.id.textViewNoItems);
         displayItemData();
+
     }
 
     private void addItem() {

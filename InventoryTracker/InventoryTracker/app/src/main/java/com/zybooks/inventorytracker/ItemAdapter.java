@@ -1,8 +1,10 @@
 package com.zybooks.inventorytracker;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +38,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        // Bind view holder to auto-populate item details on the edit screen (DisplayOneActivity.java)
         holder.itemNum.setText(String.valueOf(itemNum.get(position)));
         holder.itemName.setText(String.valueOf(itemName.get(position)));
         holder.itemQty.setText(String.valueOf(itemQty.get(position)));
@@ -73,17 +76,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder>{
             itemName = itemView.findViewById(R.id.textViewItemName);
             itemQty = itemView.findViewById(R.id.textViewItemQty);
             itemButton = itemView.findViewById(R.id.buttonUpdateItem);
-/*
-            // navigate to each item's update page
-            itemButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, DisplayOneActivity.class);
 
-                    context.startActivity(intent);
-                }
-            });*/
         }
     }
 }

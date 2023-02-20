@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.EditText;
-import android.widget.TextView;
 
 public class ItemDatabase extends SQLiteOpenHelper {
     private static ItemDatabase instance;
@@ -46,6 +44,7 @@ public class ItemDatabase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // Method to add an item
     public boolean addItem(String itemName, String itemQty) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -62,7 +61,28 @@ public class ItemDatabase extends SQLiteOpenHelper {
         else {
             return true;
         }
+    }
 
+    // Method to update the quantity of an item
+    public boolean updateItem(String itemNum, String itemName, String itemQty){
+        boolean itemUpdated = false;
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(ItemTable.ITEM_NAME, itemName);
+        cv.put(ItemTable.ITEM_QTY, itemQty);
+
+        //Toast.makeText(this, cv.get(ItemTable.ITEM_NAME), Toast.LENGTH_LONG).show();
+        String where = "itemNum = ?";
+        String[] whereArgs = new String[]{itemNum};
+
+        long result = db.update(ItemTable.TABLE, cv, where, whereArgs);
+        if (result == -1){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     public Cursor getItemData(){

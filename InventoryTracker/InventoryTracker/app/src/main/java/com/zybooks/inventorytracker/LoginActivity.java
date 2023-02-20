@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (UserDatabase.getInstance(getApplicationContext()).authenticate(userName, password)) {
             textViewLoginInvalid.setText("");
-            Intent intent = new Intent(this, DisplayAllActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
         else{

@@ -11,7 +11,7 @@
         android:id="@+id/textViewEditItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="30dp"
         android:text="Edit Item"
         android:textColor="#000"
         android:textSize="28sp"
@@ -24,113 +24,90 @@
         android:id="@+id/autoCompleteItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="122dp"
-        android:text="AutoCompleteTextView"
+        android:layout_marginTop="26dp"
+        android:background="#D8D5D5"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewQuantityInStock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
-        android:text="Quantity Currently In Stock"
-        android:textColor="#000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewOrderQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="343dp"
-        android:text="Order Quantity"
-        android:textColor="#000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textViewEditItem" />
 
     <EditText
         android:id="@+id/editTextQuantityNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="263dp"
+        android:layout_width="218dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="35dp"
+        android:background="@color/white"
         android:ems="10"
-        android:hint="Number in stock"
+        android:hint="Update stock qty"
         android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/buttonUpdateInv"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteItem" />
 
     <Button
         android:id="@+id/buttonUpdateInv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="262dp"
+        android:layout_marginTop="5dp"
         android:backgroundTint="#DAD124"
         android:text="Update Inventory"
         android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTextQuantityNum"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextQuantityNum" />
 
     <EditText
         android:id="@+id/editTextOrderNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="376dp"
+        android:layout_width="215dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="35dp"
+        android:background="@color/white"
         android:ems="10"
         android:hint="Number to order"
         android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/buttonOrderInv"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonUpdateInv" />
 
     <Button
         android:id="@+id/buttonOrderInv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="374dp"
+        android:layout_marginTop="5dp"
         android:backgroundTint="#DAD124"
         android:text="Order Inventory"
         android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTextOrderNum"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextOrderNum" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="62dp"
         android:layout_height="73dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginTop="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonOrderInv"
         app:srcCompat="@android:drawable/ic_menu_delete" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="560dp"
-        android:backgroundTint="#DAD124"
+        android:backgroundTint="#32B3021D"
         android:text="Delete Item"
         android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
