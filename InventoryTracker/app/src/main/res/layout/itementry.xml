@@ -3,9 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="14dp"
-    android:layout_marginLeft="14dp"
-    android:layout_marginRight="14dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp"
     android:backgroundTint="#C1C0C0">
 
     <LinearLayout
@@ -92,10 +93,11 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/buttonUpdateItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#DAD124"
-            android:text="Edit Item"
+            android:text="Update Item"
             android:textColor="#000"
             android:textSize="14dp">
 

@@ -41,7 +41,7 @@ public class UserDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + UserTable.TABLE + " (" +
-        UserTable.USER_NAME + " text, " +
+        UserTable.USER_NAME + " text primary key, " +
         UserTable.USER_FNAME + " text, " +
         UserTable.USER_LNAME + " text, " +
         UserTable.USER_PASSWORD + " text, " +

@@ -3,6 +3,7 @@ package com.zybooks.inventorytracker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -60,7 +61,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
+                if(hasFocus) {
                     txtViewConfirm.setText("");
                 }
             }
@@ -120,7 +121,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     }
                 }
                 else {
-                    txtViewConfirm.setText("Passwords do not match");
+                    txtViewConfirm.setText("Action Failed");
                 }
             }
         });

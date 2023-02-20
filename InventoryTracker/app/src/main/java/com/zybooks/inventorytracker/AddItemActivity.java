@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class AddItemActivity extends AppCompatActivity {
 
-    EditText itemNum, itemName, itemQty;
+    EditText itemName, itemQty;
     Button buttonAddSubmit;
     TextView txtViewConfirm;
     ItemDatabase db;
@@ -21,7 +21,6 @@ public class AddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
-        itemNum = findViewById(R.id.editTextItemNum);
         itemName = findViewById(R.id.editTextItemName);
         itemQty = findViewById(R.id.editTextQty);
         buttonAddSubmit = findViewById(R.id.buttonAddSubmit);
@@ -32,14 +31,12 @@ public class AddItemActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                String itemNumTxt = itemNum.getText().toString();
                 String itemNameTxt = itemName.getText().toString();
                 String itemQtyTxt = itemQty.getText().toString();
 
 
-                Boolean checkAddItem = db.addItem(itemNumTxt, itemNameTxt, itemQtyTxt);
+                Boolean checkAddItem = db.addItem(itemNameTxt, itemQtyTxt);
                 if (checkAddItem == true){
-                    //txtViewConfirm.setText("Item added successfully");
                     startActivity(intent);
                 }
                 else {

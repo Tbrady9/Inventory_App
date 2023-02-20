@@ -1,12 +1,17 @@
 package com.zybooks.inventorytracker;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -15,11 +20,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder>{
     private Context context;
     private ArrayList itemNum, itemName, itemQty;
 
-    public ItemAdapter(Context context, ArrayList itemNum, ArrayList itemName, ArrayList itemQty) {
+    public ItemAdapter(Context context, ArrayList itemNums, ArrayList itemNames, ArrayList itemQtys) {
         this.context = context;
-        this.itemNum = itemNum;
-        this.itemName = itemName;
-        this.itemQty = itemQty;
+        this.itemNum = itemNums;
+        this.itemName = itemNames;
+        this.itemQty = itemQtys;
     }
 
     @NonNull
@@ -34,6 +39,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder>{
         holder.itemNum.setText(String.valueOf(itemNum.get(position)));
         holder.itemName.setText(String.valueOf(itemName.get(position)));
         holder.itemQty.setText(String.valueOf(itemQty.get(position)));
+        String itemNumStr = holder.itemNum.getText().toString();
+        String itemNameStr = holder.itemName.getText().toString();
+        String itemQtyStr = holder.itemQty.getText().toString();
+
+        // navigate to each item's update page and display the item details
+        holder.itemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent intent = new Intent(context, DisplayOneActivity.class);
+                intent.putExtra("itemNumExtra", itemNumStr);
+                intent.putExtra("itemNameExtra", itemNameStr);
+                intent.putExtra("itemQtyExtra", itemQtyStr);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -41,13 +62,28 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder>{
         return itemNum.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-    TextView itemNum, itemName, itemQty;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView itemNum, itemName, itemQty;
+        Button itemButton;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            context = itemView.getContext();
             itemNum = itemView.findViewById(R.id.textViewItemNum);
             itemName = itemView.findViewById(R.id.textViewItemName);
             itemQty = itemView.findViewById(R.id.textViewItemQty);
+            itemButton = itemView.findViewById(R.id.buttonUpdateItem);
+/*
+            // navigate to each item's update page
+            itemButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, DisplayOneActivity.class);
+
+                    context.startActivity(intent);
+                }
+            });*/
         }
     }
 }

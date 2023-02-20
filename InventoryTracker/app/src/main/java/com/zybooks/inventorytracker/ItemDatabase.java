@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class ItemDatabase extends SQLiteOpenHelper {
     private static ItemDatabase instance;
@@ -31,28 +33,28 @@ public class ItemDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + ItemTable.TABLE + " (" +
-                ItemTable.ITEM_NUM + " text, " +
-                ItemTable.ITEM_NAME + " text, " +
-                ItemTable.ITEM_QTY + " text)");
+        db.execSQL("CREATE TABLE items (" +
+                "itemNum INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                "itemName text, " +
+                "qty text" +
+                ")");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + ItemTable.TABLE);
+        onCreate(db);
     }
 
-    public boolean addItem(String itemNum, String itemName, String itemQty) {
+    public boolean addItem(String itemName, String itemQty) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(ItemTable.ITEM_NUM, itemNum);
         cv.put(ItemTable.ITEM_NAME, itemName);
         cv.put(ItemTable.ITEM_QTY, itemQty);
 
         long result = db.insert(ItemTable.TABLE, null, cv);
-        SQLiteDatabase db2 = getReadableDatabase();
 
         if (result == -1){
             return false;
