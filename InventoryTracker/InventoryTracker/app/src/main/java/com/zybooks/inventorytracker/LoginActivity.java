@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,8 +33,13 @@ public class LoginActivity extends AppCompatActivity {
         String userName = textUserName.getText().toString();
         String password = textPassword.getText().toString();
 
-        Intent intent = new Intent(this, DisplayAllActivity.class);
-        startActivity(intent);
+        if (UserDatabase.getInstance(getApplicationContext()).authenticate(userName, password)) {
+            Intent intent = new Intent(this, DisplayAllActivity.class);
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(this, "invalid credentials", Toast.LENGTH_LONG).show();
+        }
     }
 
     // Take user to RegistrationActivity to create an account

@@ -1,9 +1,16 @@
 package com.zybooks.inventorytracker;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserDatabase extends SQLiteOpenHelper {
 
@@ -11,7 +18,7 @@ public class UserDatabase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "data.db";
     private static final int VERSION = 2;
 
-    private UserDatabase(Context context){
+    UserDatabase(Context context){
         super(context, DATABASE_NAME, null, VERSION);
     }
 
@@ -39,7 +46,6 @@ public class UserDatabase extends SQLiteOpenHelper {
         UserTable.USER_LNAME + " text, " +
         UserTable.USER_PASSWORD + " text, " +
         UserTable.USER_ROLE + " text)");
-
     }
 
     @Override
@@ -61,6 +67,32 @@ public class UserDatabase extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             isAuthenticated = true;
         }
+        cursor.close();
         return isAuthenticated;
     }
+
+    public boolean addUser(String userName, String userFName, String userLName,
+                        String userPassword, String userRole) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(UserTable.USER_NAME, userName);
+        cv.put(UserTable.USER_FNAME, userFName);
+        cv.put(UserTable.USER_LNAME, userLName);
+        cv.put(UserTable.USER_PASSWORD, userPassword);
+        cv.put(UserTable.USER_ROLE, userRole);
+
+        long result = db.insert(UserTable.TABLE, null, cv);
+        SQLiteDatabase db2 = getReadableDatabase();
+
+        if (result == -1){
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
 }
+
