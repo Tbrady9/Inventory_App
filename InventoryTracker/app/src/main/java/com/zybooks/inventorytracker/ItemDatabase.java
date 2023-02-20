@@ -2,6 +2,7 @@ package com.zybooks.inventorytracker;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -30,7 +31,7 @@ public class ItemDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + ItemDatabase.ItemTable.TABLE + " (" +
+        db.execSQL("CREATE TABLE " + ItemTable.TABLE + " (" +
                 ItemTable.ITEM_NUM + " text, " +
                 ItemTable.ITEM_NAME + " text, " +
                 ItemTable.ITEM_QTY + " text)");
@@ -50,7 +51,7 @@ public class ItemDatabase extends SQLiteOpenHelper {
         cv.put(ItemTable.ITEM_NAME, itemName);
         cv.put(ItemTable.ITEM_QTY, itemQty);
 
-        long result = db.insert(ItemDatabase.ItemTable.TABLE, null, cv);
+        long result = db.insert(ItemTable.TABLE, null, cv);
         SQLiteDatabase db2 = getReadableDatabase();
 
         if (result == -1){
@@ -60,5 +61,11 @@ public class ItemDatabase extends SQLiteOpenHelper {
             return true;
         }
 
+    }
+
+    public Cursor getItemData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from " + ItemTable.TABLE, null);
+        return cursor;
     }
 }

@@ -11,12 +11,13 @@
         android:id="@+id/textViewInventoryTracker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75sp"
+        android:layout_marginTop="48dp"
         android:text="Inventory Tracker"
         android:textColor="#000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,18 +25,21 @@
         android:id="@+id/buttonAddItem"
         android:layout_width="wrap_content"
         android:layout_height="40sp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="#DAD124"
         android:text="Add New Item"
         android:textColor="#000"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toStartOf="@+id/editTextItemSearch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInventoryTracker" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextItemSearch"
         android:layout_width="wrap_content"
         android:layout_height="40sp"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
         android:ems="10"
@@ -43,8 +47,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonAddItem"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInventoryTracker" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInventoryTracker"
+        app:layout_constraintVertical_bias="0.184" />
 
     <Button
         android:id="@+id/buttonSettings"
@@ -59,15 +65,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="356dp"
-        android:layout_height="300dp"
+        android:layout_width="344dp"
+        android:layout_height="402dp"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInventoryTracker"
-        app:layout_constraintVertical_bias="0.367"
+        app:layout_constraintTop_toBottomOf="@+id/editTextItemSearch"
         tools:itemCount="9" />
 
 

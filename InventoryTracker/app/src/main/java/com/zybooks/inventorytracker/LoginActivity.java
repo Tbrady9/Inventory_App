@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(listener -> confirmLogin());
         Button buttonCreateAcct = (Button)findViewById(R.id.buttonCreateAcct);
         buttonCreateAcct.setOnClickListener(listener -> createAccount());
-
     }
 
     // Method to confirm login details
@@ -37,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = textPassword.getText().toString();
 
         if (UserDatabase.getInstance(getApplicationContext()).authenticate(userName, password)) {
+            textViewLoginInvalid.setText("");
             Intent intent = new Intent(this, DisplayAllActivity.class);
             startActivity(intent);
         }

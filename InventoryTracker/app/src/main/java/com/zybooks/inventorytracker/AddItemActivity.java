@@ -2,12 +2,12 @@ package com.zybooks.inventorytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class AddItemActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class AddItemActivity extends AppCompatActivity {
         buttonAddSubmit = findViewById(R.id.buttonAddSubmit);
         txtViewConfirm = findViewById(R.id.textViewConfirm);
         db = new ItemDatabase(this);
-
+        Intent intent = new Intent(this, DisplayAllActivity.class);
         buttonAddSubmit.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -36,9 +36,11 @@ public class AddItemActivity extends AppCompatActivity {
                 String itemNameTxt = itemName.getText().toString();
                 String itemQtyTxt = itemQty.getText().toString();
 
+
                 Boolean checkAddItem = db.addItem(itemNumTxt, itemNameTxt, itemQtyTxt);
                 if (checkAddItem == true){
-                    txtViewConfirm.setText("Item added successfully");
+                    //txtViewConfirm.setText("Item added successfully");
+                    startActivity(intent);
                 }
                 else {
                     txtViewConfirm.setText("Action failed");
