@@ -23,49 +23,52 @@
         android:id="@+id/textViewAllowNotif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="169dp"
+        android:layout_marginTop="56dp"
         android:text="Allow Notifications?"
         android:textColor="#000"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/toggleButtonAllowNotif"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNotificationSettings" />
 
     <ToggleButton
         android:id="@+id/toggleButtonAllowNotif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="44dp"
         android:text="ToggleButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewAllowNotif"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNotificationSettings" />
 
     <TextView
         android:id="@+id/textViewNotifNum"
         android:layout_width="180sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="68dp"
         android:text="Send a notification when inventory goes below"
         android:textColor="#000"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewAllowNotif" />
 
     <EditText
         android:id="@+id/editTextNumber"
-        android:layout_width="100sp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="285dp"
+        android:layout_marginTop="72dp"
+        android:background="@color/white"
+        android:backgroundTint="#FBFBFB"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewNotifNum"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toggleButtonAllowNotif" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

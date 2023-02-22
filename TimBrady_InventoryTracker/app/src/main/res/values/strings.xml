@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TimBrady_InventoryTracker</string>
+    <string name="channel_name">Item qty notification</string>
+    <string name="channel_description">Notifies the user when an item qty goes below their set number</string>
+    <string name="permission_needed">Permission needed</string>
+    <string name="ok">OK</string>
+</resources>
