@@ -56,7 +56,6 @@ public class DisplayOneActivity extends AppCompatActivity {
         });
 
         btnDeleteItem.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 // Alert user to confirm delete
@@ -65,9 +64,9 @@ public class DisplayOneActivity extends AppCompatActivity {
         });
 
         btnOrderQty.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
+                // Order item
                 String orderQty = textOrderQty.getText().toString();
                 orderItems(String.valueOf(orderQty), itemNameStr);
             }

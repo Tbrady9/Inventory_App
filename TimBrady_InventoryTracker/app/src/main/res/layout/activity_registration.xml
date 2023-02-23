@@ -15,6 +15,7 @@
         android:text="Account Registration"
         android:textColor="#000"
         android:textSize="28sp"
+        android:hint="Employee Role"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

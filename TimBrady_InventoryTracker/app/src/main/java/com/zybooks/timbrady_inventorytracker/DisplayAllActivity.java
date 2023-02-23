@@ -10,6 +10,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +27,11 @@ public class DisplayAllActivity extends AppCompatActivity {
     private ItemAdapter adapter;
     private TextView textNoItems;
     private final int NOTIFICATION_ID = 0;
+    private static final String sharedPrefs = "sharedPrefs";
+    private static final String TOGGLEBUTTON = "togglebutton";
+    private static final String EDITTEXT = "userLowQty";
+    private Boolean toggleOnOff;
+    private String lowQty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,27 +54,33 @@ public class DisplayAllActivity extends AppCompatActivity {
 
         displayItemData();
 
+        loadData();
 
-        // Create notification
-        Notification notification = new NotificationCompat.Builder(DisplayAllActivity.this, CHANNEL_ID_QTY)
-                .setSmallIcon(R.drawable.cog_wheel)
-                .setContentTitle(getString(R.string.app_name))
-                .setContentText("Low quantity")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .build();
-/*
-        Button buttonAddItem = findViewById(R.id.buttonAddItem);
-        buttonAddItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        SharedPreferences sharedPreferences = getSharedPreferences(sharedPrefs, MODE_PRIVATE);
+        toggleOnOff = sharedPreferences.getBoolean(TOGGLEBUTTON, false);
 
-                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(DisplayAllActivity.this);
-                // Post notification using ID
-                notificationManager.notify(NOTIFICATION_ID, notification);
+        // Create notification and send if permission granted
+        Cursor cursor = db.getItemData();
+        if (toggleOnOff) {
+            for (int i = 0; i < itemQty.size(); i++) {
+               if (Integer.parseInt(itemQty.get(i))  <= Integer.parseInt(String.valueOf(lowQty))) {
+                   Notification notification = new NotificationCompat.Builder(DisplayAllActivity.this, CHANNEL_ID_QTY)
+                           .setSmallIcon(R.drawable.cog_wheel)
+                           .setContentTitle(getString(R.string.app_name))
+                           .setContentText("Low quantity! Item Name: " + itemName.get(i))
+                           .setPriority(NotificationCompat.PRIORITY_HIGH)
+                           .build();
+
+                   NotificationManagerCompat notificationManager = NotificationManagerCompat.from(DisplayAllActivity.this);
+                   // Post notification using ID
+                   notificationManager.notify(NOTIFICATION_ID, notification);
+               }
             }
-        });*/
+        }
 
-    }
+
+    }  // End onCreate
+
 
     private void addItem() {
         Intent intent = new Intent(this, AddItemActivity.class);
@@ -115,27 +127,10 @@ public class DisplayAllActivity extends AppCompatActivity {
         }
     }
 
-  /*  private final int NOTIFICATION_ID = 0;
-
-    private void createItemQtyNotification() {
-
-        // Create notification
-        Notification notification = new NotificationCompat.Builder(DisplayAllActivity.this, CHANNEL_ID_QTY)
-                .setSmallIcon(R.drawable.cog_wheel)
-                .setContentTitle(getString(R.string.app_name))
-                .setContentText("Low quantity")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .build();
-
-        Button buttonAddItem = findViewById(R.id.buttonAddItem);
-        buttonAddItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(DisplayAllActivity.this);
-                // Post notification using ID
-                notificationManager.notify(NOTIFICATION_ID, notification);
-            }
-        });
-    }*/
+    // Loading shared preferences for toggle button state
+    public void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(sharedPrefs, MODE_PRIVATE);
+        toggleOnOff = sharedPreferences.getBoolean(TOGGLEBUTTON, false);
+        lowQty = sharedPreferences.getString(EDITTEXT, "0");
+    }
 }
